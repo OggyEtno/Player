@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		
+		<!-- Adapte le zoom de l'écran pour les appareils mobiles -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
+		
+		<!-- Inclusion de la feuille de style -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<title>Stream Player</title>
+	</head>
+	
+	<body>
+		<div id='content'>
+			<h1>Stream Player</h1>
+			
+			<!-- Adresse IP de l'ordinateur -->
+			<label for='IPv4'>IP :</label>
+			<input onchange='changeSrc()' type='text' id='IPv4' placeholder="IPv4 de l'ordi" />
+			<br /><br />
+			
+			<!-- Port de l'application (il peut être fixé dans SWYH mais le stream ne fonctionne alors plus pour une raison inconnue) -->
+			<label for='port'>Port :</label>
+			<input onchange='changeSrc()' type='number' id='port' placeholder='Port du stream' />
+			<br />
+			
+			<div id='audio'>
+			<!-- Emplacement du lecteur généré -->
+			</div>
+		</div>
+		
+		<script>
+			// Fontion exécutée lors de la détection d'un changement dans les champs 'IPv4' et 'port'
+			// Crée un nouveau lecteur dans la div 'audio'
+			function changeSrc(){
+				var ip = document.getElementById("IPv4").value;
+				var port = document.getElementById("port").value;
+				
+				var source = document.createElement("source");
+				source.type="audio/mp3";
+				source.src="http://" + ip + ":" + port + "/stream/swyh.mp3";
+				
+				var audio = document.createElement("audio");
+				audio.controls = true;
+				audio.autoplay = true;
+				audio.appendChild(source);
+				
+				document.getElementById("audio").innerHTML = "";
+				document.getElementById("audio").appendChild(audio);
+			}
+		</script>
+	</body>
+</html>

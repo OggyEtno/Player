@@ -1,0 +1,15 @@
+body {
+	border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 1% 10%;
+    background: lightblue;
+	min-width: 350px;
+}
+
+#content {
+	padding: 5% 10%;
+	border-radius: 20px;
+	min-height: 230px;
+    background-color: lightgrey;
+}
